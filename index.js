@@ -46,6 +46,13 @@ io.on('connection', (socket) => {
     socket.to(code).emit('screen-frame', image);
   });
 
+  socket.on('request-screen', ({ code, displayId }) => {
+    const agentData = agents.get(code);
+    if (agentData) {
+      io.to(agentData.socketId).emit('request-screen', { displayId });
+    }
+  });
+
   socket.on('screen-info', ({ code, width, height }) => {
     socket.to(code).emit('screen-info', { width, height });
   });
