@@ -8,6 +8,12 @@ app.use(cors());
 
 const server = http.createServer(app);
 
+
+app.get('/api/agents', (req, res) => {
+  const onlineAgents = Array.from(agents.keys());
+  res.json({ agents: onlineAgents });
+});
+
 const io = new Server(server, {
   cors: {
     origin: '*', // For development
