@@ -9,6 +9,9 @@ app.use(express.static('public'));
 
 const server = http.createServer(app);
 
+app.get('/', (req, res) => {
+  res.send('Servidor de Acesso Remoto Operante.');
+});
 
 app.get('/api/agents', (req, res) => {
   const onlineAgents = Array.from(agents.keys());
