@@ -19,6 +19,7 @@ app.get('/api/agents', (req, res) => {
 });
 
 const io = new Server(server, {
+  maxHttpBufferSize: 1e7, // 10MB for large screenshots
   cors: {
     origin: '*', // For development
     methods: ['GET', 'POST']
